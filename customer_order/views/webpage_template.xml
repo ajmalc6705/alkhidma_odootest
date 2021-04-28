@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <template id="product_page" name="Product Web Page">
+        <t t-call="website.layout">
+            <t t-set="additional_title">Products</t>
+            <div>
+                <div class="oe_structure"/>
+                <div class="container oe_website_sale">
+                    <div class="row o_wsale_products_main_row">
+                        <div t-if="enable_left_column" class="col-lg-3"/>
+                        <div>
+                            Hai Ajmal How Are you>...!!
+                            <table>
+                                <tbody>
+                                    <tr t-foreach="product" t-as="pro">
+                                        <td>
+                                            <div>
+                                                <div class="col-6" align="right">
+                                                    <img t-att-src="pro.image" widget='image' style="width:150px;height:140px;" />
+
+                                                </div>
+                                                <div>Name:
+                                                        <span t-esc="pro.name"/>
+                                                </div>
+                                                <div>Price :
+                                                        <t t-esc="pro.price"/>
+                                                </div>
+                                            </div>
+
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="oe_structure mb32" id="oe_structure_website_sale_products_2"/>
+            </div>
+        </t>
+    </template>
+</odoo>

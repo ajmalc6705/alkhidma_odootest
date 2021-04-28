@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- Main template -->
+<!--        <template id="report_invoice1">-->
+<!--            <t t-call="web.html_container">-->
+<!--                <t t-foreach="docs" t-as="doc">-->
+<!--                    <h1>Hai Ajmal</h1>-->
+<!--                </t>-->
+<!--            </t>-->
+<!--        </template>-->
+        <template id="invoice_report1">
+            <t t-call="web.html_container">
+                <t t-foreach="docs" t-as="doc">
+                    <t t-call="web.external_layout">
+                        <div class="page">
+                            <div class="oe_structure"/>
+                            <div class="row">
+                                 <div class="col-xs-6">
+                                     <group>
+                                         <group>Customer Name:<t t-esc="doc.customer_id.name"/><br/></group>
+                                        <group>Order Date:<t t-esc="doc.date"/><br/></group>
+                                    </group>
+                                     <div>Address :
+                                         <p><t t-esc="doc.street"/><br/>
+                                        <t t-esc="doc.street2"/><br/>
+                                        <t t-esc="doc.city"/><br/>
+                                        <t t-esc="doc.country"/><br/>
+                                        <t t-esc="doc.zipcode"/></p>
+
+                                         Mob : <t t-esc="doc.contact"/>
+                                     </div>
+                                </div>
+                            </div>
+                        </div>
+                        <h1>Sale Details</h1>
+                        <table class="table table-bordered mb64">
+                            <thead>
+                                <tr>
+                                    <th name="th_productname" class="text-center">Product Name</th>
+                                    <th name="th_quantity" class="text-center">QTY</th>
+                                    <th name="th_priceunit" class="text-center">Unit Price</th>
+                                    <th name="th_subtotal" class="text-center">GTotal</th>
+                                    <th name="th_discount" class="text-right"><span>Dis.%</span></th>
+                                    <th name="th_discamount" class="text-right">Dis</th>
+                                    <th name="th_taxespercentage" class="text-right">Vat%</th>
+                                    <th name="th_totaltaxe" class="text-right">Vat</th>
+                                    <th name="th_priceunit" class="text-right">NetTotal</th>
+                                </tr>
+                            </thead>
+                            <tbody class="sale_tbody">
+<!--                                <t t-set="sub_total" t-value="0"/>-->
+                                <t t-foreach="doc.sales_details_line_ids" t-as="line" class="text-right">
+                                    <tr>
+                                        <td><t t-esc="line.product_id.name"/></td>
+                                        <td><t t-esc="line.qty"/></td>
+                                        <td><t t-esc="line.pro_price"/></td>
+                                        <td><t t-esc="line.grand_total"/></td>
+                                        <td><t t-esc="line.dis_perc"/></td>
+                                        <td><t t-esc="line.dis"/></td>
+                                        <td><t t-esc="line.vat_perc"/></td>
+                                        <td><t t-esc="line.vat_amount"/></td>
+                                        <td><t t-esc="line.net_total"/></td>
+                                    </tr>
+                                </t>
+                            </tbody>
+                        </table>
+
+                        <div class="clearfix" name="so_total_summary">
+                            <div id="total" class="row" name="total">
+                                <div t-attf-class="#{'col-4' if report_type != 'html' else 'col-sm-7 col-md-5'} ml-auto">
+                                    <table class="table table-sm">
+                                        <tr class="border-black o_subtotal" style="">
+                                            <td name="td_amount_untaxed_label"><strong>Subtotal  :</strong></td>
+                                            <td name="td_amount_untaxed" class="text-right">
+                                                <span t-field="doc.sub_total"/>
+                                            </td>
+                                        </tr>
+
+                                        <tr class="text-right o_price_total" style="">
+                                            <td name="td_total_discount_amount_label"><strong>Total Disc. :</strong></td>
+                                            <td name="td_total_discount_amount" class="text-right">
+                                                <span t-field="doc.item_dis"/>
+                                            </td>
+                                        </tr>
+
+                                        <tr class="text-right o_price_total" style="">
+                                            <td name="td_total_vat_amount_label"><strong>Total VAT. :</strong></td>
+                                            <td name="td_total_vat_amount" class="text-right">
+                                                <span t-field="doc.add_vat"/>
+                                            </td>
+                                        </tr>
+
+                                        <tr class="text-right o_price_total" style="">
+                                            <td name="td_total_round_off_label"><strong>Round Off. :</strong></td>
+                                            <td name="td_total_discount_amount" class="text-right">
+                                                <span t-field="doc.round_off"/>
+                                            </td>
+                                        </tr>
+
+                                        <tr class="border-black o_subtotal" style="">
+                                            <td name="td_total_net_amount_label"><strong>Net Amount. :</strong></td>
+                                            <td name="td_total_net_amount" class="text-right">
+                                                <span t-field="doc.net_total_amount"/>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </t>
+                </t>
+            </t>
+        </template>
+    </data>
+</odoo>
+<!--  <tr class="border-black o_total">-->
+<!--                                <td name="td_amount_total_label"><strong>Total</strong></td>-->
+<!--                                <td name="td_amount_total" class="text-right">-->
+<!--                                    <span t-field="doc.amount_total"/>-->
+<!--                                </td>-->
+<!--                            </tr>-->

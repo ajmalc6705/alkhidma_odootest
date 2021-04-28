@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <report
+                id="action_sale_invoice_quotation"
+                model="salesorder.details"
+                string="Quotation/ Order"
+                report_type="qweb-pdf"
+                name="customer_order.invoice_report1"
+                file="customer_order.invoice_report1"
+        />
+    </data>
+</odoo>

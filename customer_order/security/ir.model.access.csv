@@ -1,0 +1,5 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_customer_order_custom_details,customer_order_custom_details,customer_order.model_custom_details,base.group_user,1,1,1,1
+access_customer_order_product_details,customer_order_product_details,customer_order.model_product_details,base.group_user,1,1,1,1
+access_customer_order_salesorder.details,customer_order_salesorder.details,customer_order.model_salesorder_details,base.group_user,1,1,1,1
+access_customer_order_sales_order_line,customer_order_sales_order_line,customer_order.model_sales_order_line,base.group_user,1,1,1,1
